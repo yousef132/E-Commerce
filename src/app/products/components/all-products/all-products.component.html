@@ -4,27 +4,27 @@
     <label for="" class="my-1">Categories:</label>
     <select class="form-control" (change)="filter($event)">
       <option selected> ALL</option>
-      <option *ngFor="let item of categories;" [value]="item" >{{item}}</option>
+      <option *ngFor="let item of categories;" [value]="item">{{item}}</option>
     </select>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="!isLoading">
     @for (item of products; track $index) {
-      <div class="col-md-3 col-sm-12 mt-3">
-        <div class="item card">
-          <img src="{{item.image}}" alt="" class="card-img-top img-fluid">
-          <div class="card-body">
-            <h4 class="card-title">{{item.title}}</h4>
-            <p class="card-text">{{item.description}}</p>
-          </div>
-          <div class="card-footer d-flex justify-content-between align-items-center">
-            <button class="btn btn-success">Add To Cart</button>
-            <span>{{item.price}}</span>
-          </div>
+    <div class="col-md-3 col-sm-12 mt-3">
+      <div class="item card">
+        <img src="{{item.image}}" alt="" class="card-img-top img-fluid">
+        <div class="card-body">
+          <h4 class="card-title">{{item.title}}</h4>
+          <p class="card-text">{{item.description}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+          <button class="btn btn-success">Add To Cart</button>
+          <span>{{item.price}}</span>
         </div>
       </div>
+    </div>
 
     }
   </div>
-
+    <app-spinner *ngIf="isLoading"></app-spinner>
 
 </div>
