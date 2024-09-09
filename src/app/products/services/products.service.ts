@@ -19,4 +19,8 @@ export class ProductsService {
   filterByCategory(category: any) {
     return this.http.get(this.filterWithCategoryUrl + category);
   }
+
+  getProducttById(id:any){
+    return this.http.get(this.productsUrl + '/' + id);
+  }
 }
