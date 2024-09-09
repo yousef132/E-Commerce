@@ -1,0 +1,15 @@
+<div class="item card">
+  <img src="{{product.image}}" alt="" class="card-img-top img-fluid">
+  <div class="card-body">
+    <h4 class="card-title">{{product.title}}</h4>
+    <p class="card-text">{{product.description}}</p>
+  </div>
+  <div class="card-footer d-flex justify-content-between align-items-center">
+    <button class="btn btn-success" *ngIf="!addButton" (click) ="addButton = true">Add To Cart</button>
+    <div class="d-flex w-50" *ngIf="addButton">
+      <input type="number" class="form-control" min="1"  [(ngModel)]="quantity">
+      <button class="btn btn-danger" (click)="add()">Add</button>
+    </div>
+    <span>{{product.price}}</span>
+  </div>
+</div>
