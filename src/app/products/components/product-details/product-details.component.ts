@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '../../services/products.service';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../../shared/components/spinner/spinner.component';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product-details',
