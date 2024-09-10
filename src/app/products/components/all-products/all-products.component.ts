@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from "../../../shared/components/spinner/spinner.component";
 import { SelectComponent } from '../../../shared/components/select/select.component';
 import { ProductComponent } from '../product/product.component';
 import { RouterModule } from '@angular/router';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-all-products',
@@ -75,10 +75,10 @@ export class AllProductsComponent implements OnInit {
     else this.getProductsByCategory(category);
   }
   addToCart(product: any) {
-    console.log("Hello");
 
     let storedCart = localStorage.getItem('cart');
 
+    
     if (storedCart) {
       try {
         this.cartProducts = JSON.parse(storedCart);

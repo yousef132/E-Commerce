@@ -1,1 +1,46 @@
-<p>cart works!</p>
+<div class="container mt-5">
+  <!-- Header Section -->
+  <h2 class="cart-header text-primary">Your Cart</h2>
+  <p class="cart-info text-info">You have {{cartProducts.length}} item(s) in your cart</p>
+  <button class="btn btn-outline-danger mb-3" (click)="clearCart()">Clear Cart</button>
+
+  <!-- Cart Table -->
+  <table class="table table-bordered text-center border-primary">
+    <thead class="bg-light">
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartProducts;let index = index">
+        <td><img [src]="item.item.image" alt="Product Image" class="img-thumbnail cart-image"></td>
+        <td>{{item.item.title}}</td>
+        <td>{{item.item.price | currency}}</td>
+        <td>
+          <div class="quantity-control d-flex justify-content-center align-items-center">
+            <button class="btn btn-outline-danger" (click)="decreaseQuantity(index)">-</button>
+            <input type="number" #quantity class="form-control mx-2 quantity-input" [(ngModel)]="item.quantity" (change)="updateQuantity(index, quantity.value)">
+            <button class="btn btn-sm btn-outline-success" (click)="increaseQuantity(index)">+</button>
+          </div>
+        </td>
+        <td>{{(item.item.price * item.quantity) | currency}}</td>
+        <td><button class="btn btn-outline-danger " (click)="removeFromCart(index)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Cart Total Section -->
+  <div class="cart-total d-flex justify-content-between align-items-center mt-4 mb-5">
+    <h4 class="text-warning">Total: {{totalAmount | currency}}</h4>
+    <button class="btn btn-success" (click)="orderNow()">Order Now</button>
+  </div>
+
+  <div class="alert alert-success" *ngIf="orderCreated" role="alert">
+   <strong> Order Created !!</strong>
+  </div>
+</div>

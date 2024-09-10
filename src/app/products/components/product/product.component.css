@@ -51,3 +51,8 @@
   font-size: 1.1rem;
   color: #FF70B1; /* Custom color for price */
 }
+.fixed-image {
+  height: 200px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image covers the area without stretching */
+  width: 100%;
+}

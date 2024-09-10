@@ -5,7 +5,7 @@
   </div>
   <div class="row" *ngIf="!isLoading" >
     @for (item of products; track $index) {
-    <div class="col-md-3 col-sm-12 mt-3" routerLink="/details/{{item.id}}">
+    <div class="col-md-3 col-sm-12 mt-3" >
       <app-product [product]="item" (event)="addToCart($event)"></app-product>
     </div>
 
